@@ -1,0 +1,23 @@
+{
+  "name": "english-app",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "moment": "^2.20.1",
+    "pdfmake": "^0.1.36",
+    "react": "^16.2.0",
+    "react-datepicker": "^1.1.0",
+    "react-dom": "^16.2.0",
+    "react-scripts": "1.1.0",
+    "semantic-ui-calendar": "0.0.8",
+    "semantic-ui-css": "^2.2.14",
+    "semantic-ui-react": "^0.77.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "homepage": "http://10.39.101.102:5000"
+}
