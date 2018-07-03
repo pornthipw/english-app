@@ -181,7 +181,7 @@ class App extends React.Component {
           </Menu>
           <header className="App-header" style={{ marginTop: '1em' }}>
             <img src={logo} className="App-logo" alt="logo" />
-            <h1 className="App-title" style={{ marginTop: '0.5em' }}>Welcome to Graduate School</h1>
+            <h1 className="App-title" style={{ marginTop: '0.5em' }}>Welcome to Graduate School, Naresuan University</h1>
           </header>
           <Container textAlign='right' style={{ marginTop: '0.1em' }}>
             <Header as='h1'>  </Header>
