@@ -169,6 +169,7 @@ getResult(faculty) {
    .then((responseJson) => {
      console.log(responseJson.result);
      var peajes = responseJson.result;
+     console.log(peajes);
      //var countnumber =0;
 
      if(responseJson.result.length >= 1){

@@ -91,6 +91,8 @@ export default class FormControl extends React.Component {
             year:this.state.year,
             month:this.state.month,
             type:this.state.type,
+            dateTest:this.state.dateTest,
+            score:this.state.score,
             studentId:this.state.studentInfo.STUDENTCODE
           }
         })

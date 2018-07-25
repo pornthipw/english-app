@@ -56,6 +56,62 @@ export default class ListControl extends React.Component {
     }
   }
 
+  checkExist() {
+    return new Promise((resolve,reject) => {
+      fetch('http://10.10.26.104:30003/english/query',{
+        method:'POST',
+        headers:{
+          'Content-Type':'application/json',
+          'Authorization': 'JWT '+this.props.token,
+        },
+        body:JSON.stringify({
+          query:{
+            year:this.state.year,
+            month:this.state.month,
+            type:this.state.type,
+            dateTest:this.state.dateTest,
+            score:this.state.score,
+            studentId:this.state.studentInfo.STUDENTCODE
+          }
+        })
+      })
+      .then((response) => response.json())
+      .then((responseJson) => {
+        console.log(responseJson);
+        if(responseJson.result.length >= 1) {
+          resolve(true)
+        } else {
+          resolve(false);
+        }
+      });
+    });
+  }
+
+  deleteClick = (event,value) => {
+    this.checkExist().then((exists) => {
+      console.log(exists);
+      if(exists){
+        //this.setState({clickSaveAble:false,clickAble:false})
+        //this.handleStudentLoaded();
+      } else {
+
+       fetch('http://10.10.26.104:30003/delete_english/'+value,{
+          method:'DELETE',
+          headers:{
+            'Content-Type':'application/json',
+            'Authorization': 'JWT '+this.props.token,
+          }
+        })
+        .then((response) => response.json())
+        .then((responseJson) => {
+          //if(responseJson.result.length == 1){
+            this.setState({'exists':false});
+          //}
+        });
+      }
+    });
+  }
+
   getReport() {
     var arry = [];
     for(var i=0;i<facultys.length;i++) {
@@ -160,7 +216,10 @@ export default class ListControl extends React.Component {
           <Table.Cell>{student.programName}</Table.Cell>
           <Table.Cell>{student.score}</Table.Cell>
           <Table.Cell>{student.level}</Table.Cell>
-          <Table.Cell><Icon name='edit' /></Table.Cell>
+          <Table.Cell>
+            <Icon name='edit' />
+
+          </Table.Cell>
           <Table.Cell collapsing textAlign='right'>{student.month}/{student.year}</Table.Cell>
         </Table.Row>
       )}
@@ -175,7 +234,11 @@ export default class ListControl extends React.Component {
         <Table.Cell>{student.programName}</Table.Cell>
         <Table.Cell>{student.score}</Table.Cell>
         <Table.Cell>{student.level}</Table.Cell>
-        <Table.Cell><Icon name='edit' /></Table.Cell>
+        <Table.Cell>
+        
+        <Icon name='edit' />
+
+        </Table.Cell>
         <Table.Cell collapsing textAlign='right'>{student.month}/{student.year}</Table.Cell>
       </Table.Row>
     )}
